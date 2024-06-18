@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        form {
+            width: 30%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #27292c;
+        }
+        .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://creakyjoints.org/wp-content/uploads/2023/05/Why-Its-So-Difficult-to-Get-Doctors-Appointments-Right-Now-1024x683.jpg" alt="Doctor">
+    </div>
+    <form action="/patient/make_appointment" method="POST">
+        <h2>Make an Appointment</h2>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required><br><br>
+
+        <label for="doctor">Choose Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="">Select Doctor</option>
+            <% doctors.forEach(doctor => { %>
+                <option value="<%= doctor.doctor_id %>"><%= doctor.name %></option>
+            <% }); %>
+        </select><br><br>
+
+        <label for="reason">Reason for Appointment:</label><br>
+        <textarea id="reason" name="reason" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit Appointment">
+    </form>
+</body>
+</html>

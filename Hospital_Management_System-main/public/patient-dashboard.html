@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .dashboard {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5); /* Light blue background color */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(10, 73, 100, 0.1);
+            max-width: 60%; /* Decreased max-width */
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            display: inline-block;
+            background-color: rgba(132, 180, 192, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(10, 73, 100, 0.1);
+            padding: 10px;
+            margin: 5px;
+            width: calc(30% - 10px); /* Decreased width */
+        }
+
+        .card i {
+            font-size: 36px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            color: #000000; /* Black font color */
+            cursor: pointer;
+        }
+
+        .card-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card-group .card {
+            width: calc(40% - 10px); /* Adjusted width */
+        }
+
+        @media screen and (max-width: 768px) {
+            .card-group .card {
+                width: calc(80% - 10px); /* Adjusted width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="https://media.istockphoto.com/id/1439753810/video/animated-visit-patient-illustration.mp4?s=mp4-640x640-is&k=20&c=rjoEmIrmQw4rlP9CZhvL0RUAIvT72fEp8uxjNdnz5Is=" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="dashboard">
+        <div class="logout">
+            Logout <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <h1>Welcome Patient</h1>
+        <div class="card-group">
+            <div class="card">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>Appointments</h2>
+                <p>View and manage your appointments</p>
+                <a href="/patient/view-appointments" class="button">Go to Appointments</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-notes-medical"></i>
+                <h2>Medical History</h2>
+                <p>View medical history</p>
+                <a href="/patient/view-medical-history" class="button">View Medical History</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-plus"></i>
+                <h2>Schedule</h2>
+                <p>Consult our leading doctors</p>
+                <a href="/schedule-appointment" class="button">Schedule a new appointment</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-plus"></i>
+                <h2>View Previous Bills</h2>
+                <p>See bills of your previous appointments</p>
+                <a href="/patient/view-bills" class="button">View Bills</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-plus"></i>
+                <h2>d-AI-gnose</h2>
+                <p>AI Model to assist your diagnosis</p>
+                <a href="https://symptom2disease.streamlit.app/" class="button">Use Model</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

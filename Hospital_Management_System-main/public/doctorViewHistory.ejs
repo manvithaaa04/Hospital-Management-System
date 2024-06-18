@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .appointment-box {
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: row; /* Change to row */
+            align-items: center;
+            justify-content: space-between; /* Add this */
+            min-height: 70vh; /* Adjust the minimum height */
+        }
+
+        .patient-image {
+            width: 45%; /* Adjust width */
+            margin: 20px;
+        }
+
+        .patient-image img {
+            width: 80%;
+            height: auto;
+            max-height: 250px; /* Adjust the max-height as needed */
+        }
+
+        .appointment-table {
+            width: 60%; /* Adjust width */
+            border-collapse: collapse;
+        }
+
+        .appointment-table th,
+        .appointment-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .appointment-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Medical History</h1>
+    </div>
+
+    <div class="appointment-box">
+        <div class="patient-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfjQReSnR0eDySK1-rKuY4OcUZQmWzj1XcNd5dB146nA&s" alt="Patient Image">
+        </div>
+        <% if (appointments.length === 0) { %>
+            <p>No previous appointments with diagnosis found.</p>
+        <% } else { %>
+            <% appointments.forEach(appointment => { %>
+        <table class="appointment-table">
+            <thead>
+                <tr>
+                    <th>Patient's name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Diagnosis</th>
+                    <th>Prescribed Medicines</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= appointment.patient_name %></td>
+                    <td><%= appointment.appointment_date %></td>
+                    <td><%= appointment.appointment_time %></td>
+                    <td><%= appointment.diagnosis %></td>
+                    <% if (appointment.medicine_names) { %>
+                    <td><%= appointment.medicine_names %></td>
+                    <% } %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <% }); %>
+    <% } %>
+
+
+</body>
+</html>
